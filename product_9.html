@@ -1,0 +1,1511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THE QUIET STEP | Timeless Luxury</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #1a1a1a;
+            --secondary: #d4af37;
+            --accent: #8b8b8b;
+            --light: #f8f8f8;
+            --dark: #121212;
+            --text: #333;
+            --text-light: #777;
+            --patina: #f1f0ec;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Times New Roman', Times, serif;
+        }
+        
+        body {
+            color: var(--text);
+            background-color: var(--light);
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+        }
+        
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(212, 175, 55, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(212, 175, 55, 0.03) 0%, transparent 50%);
+            z-index: -1;
+            pointer-events: none;
+        }
+        
+        header {
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            background-color: rgba(248, 248, 248, 0.95);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(5px);
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: normal;
+            letter-spacing: 1px;
+            color: var(--primary);
+            text-align: center;
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+        
+        .logo::after {
+            content: "";
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 1px;
+            background: var(--secondary);
+        }
+        
+        .promo-banner {
+            background-color: var(--primary);
+            color: var(--light);
+            padding: 0.8rem;
+            text-align: center;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.5px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .promo-banner::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, 
+                transparent 0%, 
+                rgba(212, 175, 55, 0.2) 50%, 
+                transparent 100%);
+            animation: shine 3s infinite;
+        }
+        
+        @keyframes shine {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        
+        .promo-banner a {
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: normal;
+            margin-left: 0.5rem;
+            position: relative;
+        }
+        
+        .promo-banner a::after {
+            content: "";
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: var(--secondary);
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.3s ease;
+        }
+        
+        .promo-banner a:hover::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+        
+        .main-nav {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .user-nav {
+            display: flex;
+            gap: 1.5rem;
+        }
+        
+        nav a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: normal;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+        
+        nav a::after {
+            content: "";
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--secondary);
+            transition: width 0.3s ease;
+        }
+        
+        nav a:hover {
+            color: var(--primary);
+        }
+        
+        nav a:hover::after {
+            width: 100%;
+        }
+        
+        /* Product Page Styles */
+        .product-container {
+            max-width: 1400px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+        
+        .product-gallery {
+            position: relative;
+            background: var(--patina);
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: 80px 1fr;
+            gap: 1.5rem;
+            border-radius: 4px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        }
+        
+        .thumbnails {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .thumbnail {
+            width: 80px;
+            height: 80px;
+            cursor: pointer;
+            border: 1px solid rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            background: white;
+        }
+        
+        .thumbnail:hover, .thumbnail.active {
+            border-color: var(--secondary);
+        }
+        
+        .thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .main-image {
+            position: relative;
+            height: 500px;
+            overflow: hidden;
+            background: white;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        
+        .main-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            transition: transform 0.5s ease;
+        }
+        
+        .product-info {
+            padding: 0 1rem;
+        }
+        
+        .breadcrumb {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+        }
+        
+        .breadcrumb a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .breadcrumb a:hover {
+            color: var(--primary);
+        }
+        
+        .breadcrumb span {
+            margin: 0 0.5rem;
+        }
+        
+        .product-title {
+            font-size: 2rem;
+            font-weight: normal;
+            margin-bottom: 1rem;
+            letter-spacing: 1px;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .product-title::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 1px;
+            background: var(--secondary);
+        }
+        
+        .product-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+        
+        .price-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .current-price {
+            font-size: 1.8rem;
+            font-weight: normal;
+            color: var(--primary);
+        }
+        
+        .original-price {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            text-decoration: line-through;
+        }
+        
+        .badge {
+            background-color: var(--secondary);
+            color: var(--primary);
+            padding: 0.3rem 0.8rem;
+            font-size: 0.85rem;
+            display: inline-block;
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.5px;
+        }
+        
+        .affirm-payment {
+            background: rgba(0,0,0,0.03);
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+            border-left: 2px solid var(--secondary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            border-radius: 4px;
+        }
+        
+        .affirm-payment span {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+        
+        .affirm-payment a {
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        .size-selection {
+            margin-bottom: 2rem;
+        }
+        
+        .size-selection h4 {
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            font-weight: normal;
+            letter-spacing: 0.5px;
+        }
+        
+        .size-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 0.8rem;
+            margin-bottom: 1rem;
+        }
+        
+        .size-option {
+            border: 1px solid rgba(0,0,0,0.1);
+            padding: 0.8rem 0.5rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            background: white;
+        }
+        
+        .size-option:hover, .size-option.selected {
+            border-color: var(--secondary);
+            color: var(--secondary);
+        }
+        
+        .size-option.sold-out {
+            color: var(--accent);
+            text-decoration: line-through;
+            cursor: not-allowed;
+            opacity: 0.5;
+        }
+        
+        .width-selection {
+            margin-bottom: 2rem;
+        }
+        
+        .width-grid {
+            display: flex;
+            gap: 0.8rem;
+        }
+        
+        .width-option {
+            border: 1px solid rgba(0,0,0,0.1);
+            padding: 0.8rem 1.5rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: white;
+        }
+        
+        .width-option:hover, .width-option.selected {
+            border-color: var(--secondary);
+            color: var(--secondary);
+        }
+        
+        .add-to-bag {
+            background-color: var(--primary);
+            color: var(--light);
+            border: none;
+            padding: 1.2rem 2rem;
+            width: 100%;
+            font-size: 1rem;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 1.5rem;
+            border-radius: 4px;
+        }
+        
+        .add-to-bag::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--secondary);
+            transition: left 0.3s ease;
+            z-index: -1;
+        }
+        
+        .add-to-bag:hover {
+            color: var(--primary);
+        }
+        
+        .add-to-bag:hover::before {
+            left: 0;
+        }
+        
+        .pickup-option {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+        
+        .pickup-option i {
+            color: var(--secondary);
+        }
+        
+        .pickup-option a {
+            color: var(--primary);
+            text-decoration: none;
+            position: relative;
+        }
+        
+        .pickup-option a::after {
+            content: "";
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: var(--primary);
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.3s ease;
+        }
+        
+        .pickup-option a:hover::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+        
+        .reviews-section {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(0,0,0,0.1);
+            max-width: 1400px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+        }
+        
+        .reviews-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+        
+        .reviews-title {
+            font-size: 1.5rem;
+            font-weight: normal;
+            letter-spacing: 0.5px;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .reviews-title::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 1px;
+            background: var(--secondary);
+        }
+        
+        .review-filters {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .filter-btn {
+            background: transparent;
+            border: 1px solid rgba(0,0,0,0.1);
+            padding: 0.5rem 1rem;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-radius: 4px;
+        }
+        
+        .filter-btn:hover {
+            border-color: var(--secondary);
+            color: var(--secondary);
+        }
+        
+        .review-stats {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            background: rgba(0,0,0,0.02);
+            padding: 1.5rem;
+            border-radius: 4px;
+        }
+        
+        .average-rating {
+            font-size: 3rem;
+            font-weight: normal;
+            color: var(--primary);
+        }
+        
+        .stars {
+            display: flex;
+            gap: 0.2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stars i {
+            color: var(--secondary);
+        }
+        
+        .review-count {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+        
+        .rating-distribution {
+            flex: 1;
+            padding-left: 2rem;
+        }
+        
+        .rating-bar {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+        
+        .rating-bar span {
+            width: 30px;
+            font-size: 0.9rem;
+        }
+        
+        .bar-container {
+            flex: 1;
+            height: 6px;
+            background: rgba(0,0,0,0.05);
+            margin: 0 1rem;
+            overflow: hidden;
+        }
+        
+        .bar {
+            height: 100%;
+            background: var(--secondary);
+        }
+        
+        .review-list {
+            margin-top: 2rem;
+        }
+        
+        .review-card {
+            padding: 1.5rem;
+            border: 1px solid rgba(0,0,0,0.05);
+            border-radius: 4px;
+            margin-bottom: 1.5rem;
+            background: white;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+        }
+        
+        .reviewer {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .reviewer-name {
+            font-weight: bold;
+        }
+        
+        .reviewer-verified {
+            font-size: 0.8rem;
+            color: var(--secondary);
+            background: rgba(212, 175, 55, 0.1);
+            padding: 0.1rem 0.5rem;
+            border-radius: 2px;
+        }
+        
+        .review-content {
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+        
+        .review-date {
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+        
+        /* Comment Section */
+        .comment-section {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(0,0,0,0.1);
+        }
+        
+        .comment-form {
+            background: white;
+            padding: 2rem;
+            border-radius: 4px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+        
+        .form-title {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .form-title::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 1px;
+            background: var(--secondary);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: normal;
+        }
+        
+        .form-group input, 
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid rgba(0,0,0,0.1);
+            border-radius: 4px;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 1rem;
+        }
+        
+        .form-group textarea {
+            height: 150px;
+            resize: vertical;
+        }
+        
+        .rating-input {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .rating-input .stars {
+            margin-bottom: 0;
+        }
+        
+        .rating-input i {
+            cursor: pointer;
+            color: #ddd;
+            transition: color 0.2s ease;
+        }
+        
+        .rating-input i.active {
+            color: var(--secondary);
+        }
+        
+        .submit-btn {
+            background-color: var(--primary);
+            color: var(--light);
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border-radius: 4px;
+        }
+        
+        .submit-btn::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--secondary);
+            transition: left 0.3s ease;
+            z-index: -1;
+        }
+        
+        .submit-btn:hover {
+            color: var(--primary);
+        }
+        
+        .submit-btn:hover::before {
+            left: 0;
+        }
+        
+        .posted-comments {
+            margin-top: 3rem;
+        }
+        
+        .no-comments {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-light);
+            font-style: italic;
+            background: rgba(0,0,0,0.02);
+            border-radius: 4px;
+        }
+        
+        .footer-nav {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            padding: 3rem 2rem;
+            background-color: var(--primary);
+            color: var(--light);
+        }
+        
+        .footer-nav-column h3 {
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+            font-weight: normal;
+            letter-spacing: 1px;
+            position: relative;
+        }
+        
+        .footer-nav-column h3::after {
+            content: "";
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 40px;
+            height: 1px;
+            background: var(--secondary);
+        }
+        
+        .footer-nav-column ul {
+            list-style: none;
+        }
+        
+        .footer-nav-column li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-nav-column a {
+            color: var(--light);
+            text-decoration: none;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+            transition: color 0.3s ease;
+            opacity: 0.8;
+        }
+        
+        .footer-nav-column a:hover {
+            color: var(--secondary);
+            opacity: 1;
+        }
+        
+        .footer-promo {
+            text-align: center;
+            padding: 2rem;
+            background-color: var(--dark);
+            color: var(--light);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .footer-promo::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, 
+                transparent 0%, 
+                rgba(212, 175, 55, 0.1) 50%, 
+                transparent 100%);
+            animation: shine 3s infinite;
+        }
+        
+        .footer-promo strong {
+            display: block;
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.5px;
+        }
+        
+        .footer-promo a {
+            color: var(--secondary);
+            text-decoration: none;
+            letter-spacing: 0.5px;
+            position: relative;
+        }
+        
+        .footer-promo a::after {
+            content: "";
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: var(--secondary);
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.3s ease;
+        }
+        
+        .footer-promo a:hover::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background-color: var(--dark);
+            color: var(--light);
+        }
+        
+        footer .logo {
+            color: var(--light);
+            margin-bottom: 1.5rem;
+        }
+        
+        footer .logo::after {
+            background: var(--secondary);
+        }
+        
+        footer nav {
+            justify-content: center;
+        }
+        
+        footer nav a {
+            color: var(--light);
+        }
+        
+        footer nav a:hover {
+            color: var(--secondary);
+        }
+        
+        @media (max-width: 992px) {
+            .product-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .product-gallery {
+                grid-template-columns: 1fr;
+            }
+            
+            .thumbnails {
+                flex-direction: row;
+                order: 2;
+                justify-content: center;
+            }
+            
+            .review-stats {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .rating-distribution {
+                padding-left: 0;
+                width: 100%;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            header {
+                padding: 1rem;
+            }
+            
+            .logo {
+                font-size: 1.5rem;
+                margin-bottom: 0.5rem;
+            }
+            
+            nav {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .main-nav, .user-nav {
+                width: 100%;
+                justify-content: space-around;
+                gap: 1rem;
+            }
+            
+            .size-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+            
+            .footer-nav {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                padding: 2rem 1rem;
+                gap: 1.5rem;
+            }
+            
+            .review-filters {
+                flex-wrap: wrap;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .size-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .width-grid {
+                flex-wrap: wrap;
+            }
+        }
+        
+        /* Animation for size selection */
+        .size-option, .width-option {
+            transform: translateY(0);
+            transition: transform 0.2s ease;
+        }
+        
+        .size-option:hover {
+            transform: translateY(-3px);
+        }
+        
+        .width-option:hover {
+            transform: translateY(-3px);
+        }
+        
+        /* Scroll reveal animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <script src="cart-functions.js"></script>
+        <div class="logo">THE QUIET STEP</div>
+        <div class="promo-banner">
+            <strong>Status Isn't Shouted. It's Worn.</strong>  
+            <a href="#">Learn More</a>  
+        </div>
+        <nav>
+            <div class="main-nav">
+                <a href="#">MEN</a>
+                <a href="#">WOMEN</a>
+                <a href="#">BAGS & LEATHER GOODS</a>
+                <a href="#">SALE</a>
+                <a href="#">FEATURED SHOPS</a>
+            </div>
+            <div class="user-nav">
+                <a href="/store/register.html"><i class="fas fa-user"></i> Sign In</a>
+                <a href="#"><i class="fas fa-search"></i></a>
+                <a href="/store/Cart.html"><i class="fas fa-shopping-bag"></i></a>
+            </div>
+        </nav>
+    </header>
+    
+    <div class="product-container">
+        <div class="product-gallery reveal">
+            <div class="thumbnails">
+                <div class="thumbnail active">
+                    <img src="images/pro9first.jpg" alt="Brown Oxford Full Grain">
+                </div>
+                <div class="thumbnail">
+                    <img src="images/pro9sec.jpg" alt="Brown Oxford Full Grain">
+                </div>
+                <div class="thumbnail">
+                    <img src="images/pro9third.png" alt="Brown Oxford Full Grain">
+                </div>
+                <div class="thumbnail">
+                    <img src="images/pro9four.jpg" alt="Brown Oxford Full Grain">
+                </div>
+            </div>
+            <div class="main-image">
+                <img src="images/pro9.jpeg" alt="Brown Oxford Full Grain">
+            </div>
+        </div>
+        
+        <div class="product-info">
+            <div class="breadcrumb reveal">
+                <a href="#">Home</a> <span>/</span>
+                <a href="#">Men</a> <span>/</span>
+                <a href="#">Dress Shoes</a> <span>/</span>
+                <a href="#">Oxfords</a>
+            </div>
+            
+            <h1 class="product-title reveal">Brown Oxford Full Grain</h1>
+            <p class="product-subtitle reveal">Classic Kicks, Modern Fit</p>
+            
+            <div class="price-container reveal">
+                <div class="current-price">$139.00</div>
+            </div>
+            
+            <div class="badge reveal">New Value</div>
+            
+            <div class="affirm-payment reveal">
+                <i class="fas fa-credit-card"></i>
+                <span>4 interest-free payments of $38 with <a href="#">affirm</a>. See if you qualify</span>
+            </div>
+            
+            <div class="size-selection reveal">
+                <h4>Select Size:</h4>
+                <div class="size-grid">
+                    <div class="size-option">8</div>
+                    <div class="size-option">8.5</div>
+                    <div class="size-option selected">9</div>
+                    <div class="size-option">9.5</div>
+                    <div class="size-option">10</div>
+                    <div class="size-option">10.5</div>
+                    <div class="size-option">11</div>
+                    <div class="size-option">11.5</div>
+                    <div class="size-option">12</div>
+                    <div class="size-option sold-out">13</div>
+                    <div class="size-option sold-out">14</div>
+                </div>
+            </div>
+            
+            <div class="width-selection reveal">
+                <h4>Select Width:</h4>
+                <div class="width-grid">
+                    <div class="width-option selected">M</div>
+                    <div class="width-option">W</div>
+                    <div class="width-option">XW</div>
+                </div>
+            </div>
+            
+            <button class="add-to-bag reveal" 
+            onclick="addToCart({
+            id: 'product9',
+            name: 'Brayson Knit Plain Toe',
+            price: 39.29,
+            image: 'images/pro9.jpeg',
+            size: document.querySelector('.size-option.selected')?.textContent || '9',
+            width: document.querySelector('.width-option.selected')?.textContent || 'M'
+        })">
+            ADD TO BAG
+            <a href="cart.html"></a>
+        </button>
+            
+            <div class="pickup-option reveal">
+                <i class="fas fa-store"></i>
+                <span>Want it sooner? <a href="#">Pickup in Store</a></span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="reviews-section reveal">
+        <div class="reviews-header">
+            <h2 class="reviews-title">Customer Reviews</h2>
+            <div class="review-filters">
+                <button class="filter-btn">Filter Reviews</button>
+                <button class="filter-btn">Search reviews</button>
+                <button class="filter-btn">Rating</button>
+                <button class="filter-btn">With media</button>
+                <button class="filter-btn">Sort by: Highest rating</button>
+            </div>
+        </div>
+        
+        <div class="review-stats">
+            <div class="average-rating">4.9</div>
+            <div>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <div class="review-count">Based on 109 reviews</div>
+            </div>
+            <div class="rating-distribution">
+                <div class="rating-bar">
+                    <span>5★</span>
+                    <div class="bar-container">
+                        <div class="bar" style="width: 92%"></div>
+                    </div>
+                    <span>92%</span>
+                </div>
+                <div class="rating-bar">
+                    <span>4★</span>
+                    <div class="bar-container">
+                        <div class="bar" style="width: 5%"></div>
+                    </div>
+                    <span>5%</span>
+                </div>
+                <div class="rating-bar">
+                    <span>3★</span>
+                    <div class="bar-container">
+                        <div class="bar" style="width: 2%"></div>
+                    </div>
+                    <span>2%</span>
+                </div>
+                <div class="rating-bar">
+                    <span>2★</span>
+                    <div class="bar-container">
+                        <div class="bar" style="width: 1%"></div>
+                    </div>
+                    <span>1%</span>
+                </div>
+                <div class="rating-bar">
+                    <span>1★</span>
+                    <div class="bar-container">
+                        <div class="bar" style="width: 0%"></div>
+                    </div>
+                    <span>0%</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="review-list">
+            <div class="review-card">
+                <div class="reviewer">
+                    <div class="reviewer-name">Michael T.</div>
+                    <div class="reviewer-verified">VERIFIED BUYER</div>
+                </div>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <div class="review-content">
+                    <p>These are the most comfortable dress shoes I've ever owned. The craftsmanship is exceptional, and they look even better in person than in the photos. Highly recommend!</p>
+                </div>
+                <div class="review-date">Posted on June 15, 2023</div>
+            </div>
+            
+            <div class="review-card">
+                <div class="reviewer">
+                    <div class="reviewer-name">Jonathan R.</div>
+                    <div class="reviewer-verified">VERIFIED BUYER</div>
+                </div>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <div class="review-content">
+                    <p>I've been wearing these for my office job for three months now. They've held up beautifully and are incredibly comfortable even after long days. The leather has developed a wonderful patina.</p>
+                </div>
+                <div class="review-date">Posted on May 28, 2023</div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Comment Section -->
+    <div class="comment-section reveal">
+        <div class="comment-form">
+            <h2 class="form-title">Leave a Review</h2>
+            <form id="commentForm">
+                <div class="form-group">
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email Address (optional)</label>
+                    <input type="email" id="email" name="email">
+                </div>
+                
+                <div class="form-group">
+                    <label>Rating</label>
+                    <div class="rating-input">
+                        <div class="stars">
+                            <i class="fas fa-star" data-value="1"></i>
+                            <i class="fas fa-star" data-value="2"></i>
+                            <i class="fas fa-star" data-value="3"></i>
+                            <i class="fas fa-star" data-value="4"></i>
+                            <i class="fas fa-star" data-value="5"></i>
+                        </div>
+                        <input type="hidden" id="rating" name="rating" value="0">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="comment">Your Review</label>
+                    <textarea id="comment" name="comment" required></textarea>
+                </div>
+                
+                <button type="submit" class="submit-btn">POST REVIEW</button>
+            </form>
+        </div>
+        
+        <div class="posted-comments">
+            <h2 class="form-title">Customer Reviews</h2>
+            <div id="commentsContainer">
+                <div class="no-comments">No reviews yet. Be the first to share your thoughts!</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="footer-nav">
+        <div class="footer-nav-column">
+            <h3>Shoes</h3>
+            <ul>
+                <li><a href="#">New Arrivals</a></li>
+                <li><a href="#">Lace-Ups</a></li>
+                <li><a href="#">Slip-Ons & Loafers</a></li>
+                <li><a href="#">Sneakers</a></li>
+                <li><a href="#">Golf</a></li>
+                <li><a href="#">Boots</a></li>
+                <li><a href="#">Sandals</a></li>
+                <li><a href="#">Dress Shoes</a></li>
+                <li><a href="#">Formal Shoes</a></li>
+                <li><a href="#">Special Value</a></li>
+                <li><a href="#">Sale</a></li>
+            </ul>
+        </div>
+        
+        <div class="footer-nav-column">
+            <h3>Apparel</h3>
+            <ul>
+                <li><a href="#">New Arrivals</a></li>
+                <li><a href="#">Shirts</a></li>
+                <li><a href="#">Short-Sleeve Shirts</a></li>
+                <li><a href="#">Polos & Tees</a></li>
+                <li><a href="#">Sweaters & Knits</a></li>
+                <li><a href="#">Coats, Jackets & Vests</a></li>
+                <li><a href="#">Blazers</a></li>
+                <li><a href="#">Shorts</a></li>
+                <li><a href="#">Pants & Jeans</a></li>
+                <li><a href="#">Golf</a></li>
+                <li><a href="#">Loungewear</a></li>
+            </ul>
+        </div>
+        
+        <div class="footer-nav-column">
+            <h3>Accessories</h3>
+            <ul>
+                <li><a href="#">Belts</a></li>
+                <li><a href="#">Backpacks & Briefcases</a></li>
+                <li><a href="#">Travel Accessories</a></li>
+                <li><a href="#">Wallets</a></li>
+                <li><a href="#">Socks</a></li>
+                <li><a href="#">Shoe Care & Accessories</a></li>
+            </ul>
+        </div>
+        
+        <div class="footer-nav-column">
+            <h3>Featured</h3>
+            <ul>
+                <li><a href="#">Father's Day Gift Guide</a></li>
+                <li><a href="#">New Arrivals</a></li>
+                <li><a href="#">Wear to Work</a></li>
+            </ul>
+        </div>
+        
+        <div class="footer-nav-column">
+            <h3>Women's Shoes</h3>
+            <ul>
+                <li><a href="#">Sneakers</a></li>
+                <li><a href="#">Mules & Loafers</a></li>
+                <li><a href="#">Boots & Booties</a></li>
+                <li><a href="#">Heels & Platform Wedges</a></li>
+                <li><a href="#">Sandals</a></li>
+                <li><a href="#">Sale</a></li>
+            </ul>
+        </div>
+        
+        <div class="footer-nav-column">
+            <h3>Apparel & Accessories</h3>
+            <ul>
+                <li><a href="#">Shirts & Sweaters</a></li>
+                <li><a href="#">Coats, Jackets & Vests</a></li>
+                <li><a href="#">Blazers & Pants</a></li>
+                <li><a href="#">Dresses</a></li>
+                <li><a href="#">Socks</a></li>
+                <li><a href="#">Totes</a></li>
+            </ul>
+        </div>
+        
+        <div class="footer-nav-column">
+            <h3>Featured</h3>
+            <ul>
+                <li><a href="#">New Arrivals</a></li>
+                <li><a href="#">End of Season Sale</a></li>
+                <li><a href="#">NEW ARRIVALS</a></li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="footer-promo">
+        <strong>True Style Doesn't Wait. Neither Should You.</strong>  
+        <a href="#">Learn More</a>
+    </div>
+    
+    <footer>
+        <div class="logo">THE QUIET STEP</div>
+        <nav>
+            <div class="main-nav">
+                <a href="#">MEN</a>
+                <a href="#">WOMEN</a>
+                <a href="#">BAGS & LEATHER GOODS</a>
+                <a href="#">SALE</a>
+                <a href="#">FEATURED SHOPS</a>
+                <a href="#">FATHER'S DAY SALE</a>
+            </div>
+        </nav>
+    </footer>
+
+    <script>
+        // Scroll reveal animation
+        const scrollReveal = () => {
+            const reveals = document.querySelectorAll('.reveal');
+            
+            for (let i = 0; i < reveals.length; i++) {
+                const windowHeight = window.innerHeight;
+                const revealTop = reveals[i].getBoundingClientRect().top;
+                const revealPoint = 150;
+                
+                if (revealTop < windowHeight - revealPoint) {
+                    reveals[i].classList.add('active');
+                } else {
+                    reveals[i].classList.remove('active');
+                }
+            }
+        };
+        
+        window.addEventListener('scroll', scrollReveal);
+        window.addEventListener('load', scrollReveal);
+        
+        // Product gallery functionality
+        const thumbnails = document.querySelectorAll('.thumbnail');
+        const mainImage = document.querySelector('.main-image img');
+        
+        thumbnails.forEach(thumbnail => {
+            thumbnail.addEventListener('click', () => {
+                // Remove active class from all thumbnails
+                thumbnails.forEach(t => t.classList.remove('active'));
+                
+                // Add active class to clicked thumbnail
+                thumbnail.classList.add('active');
+                
+                // Update main image
+                const imgSrc = thumbnail.querySelector('img').src.replace('400', '800');
+                mainImage.src = imgSrc;
+                
+                // Add animation effect
+                mainImage.style.transform = 'scale(1.05)';
+                setTimeout(() => {
+                    mainImage.style.transform = 'scale(1)';
+                }, 300);
+            });
+        });
+        
+        // Size and width selection
+        const sizeOptions = document.querySelectorAll('.size-option:not(.sold-out)');
+        const widthOptions = document.querySelectorAll('.width-option');
+        
+        sizeOptions.forEach(option => {
+            option.addEventListener('click', () => {
+                sizeOptions.forEach(opt => opt.classList.remove('selected'));
+                option.classList.add('selected');
+            });
+        });
+        
+        widthOptions.forEach(option => {
+            option.addEventListener('click', () => {
+                widthOptions.forEach(opt => opt.classList.remove('selected'));
+                option.classList.add('selected');
+            });
+        });
+        
+        // Add to bag button animation
+        const addToBag = document.querySelector('.add-to-bag');
+        addToBag.addEventListener('click', () => {
+            addToBag.textContent = 'ADDED TO BAG ✓';
+            addToBag.style.backgroundColor = '#d4af37';
+            addToBag.style.color = '#1a1a1a';
+            
+            setTimeout(() => {
+                addToBag.textContent = 'ADD TO BAG';
+                addToBag.style.backgroundColor = '';
+                addToBag.style.color = '';
+            }, 2000);
+        });
+        
+        // Star rating for comments
+        const stars = document.querySelectorAll('.rating-input .fa-star');
+        const ratingInput = document.getElementById('rating');
+        
+        stars.forEach(star => {
+            star.addEventListener('click', () => {
+                const value = parseInt(star.getAttribute('data-value'));
+                ratingInput.value = value;
+                
+                stars.forEach((s, index) => {
+                    if (index < value) {
+                        s.classList.add('active');
+                    } else {
+                        s.classList.remove('active');
+                    }
+                });
+            });
+        });
+        
+        // Comment form submission
+        const commentForm = document.getElementById('commentForm');
+        const commentsContainer = document.getElementById('commentsContainer');
+        
+        commentForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const rating = parseInt(ratingInput.value);
+            const comment = document.getElementById('comment').value;
+            
+            if (!name || !rating || !comment) {
+                alert('Please fill in all required fields');
+                return;
+            }
+            
+            // Remove "no comments" message if it exists
+            if (commentsContainer.querySelector('.no-comments')) {
+                commentsContainer.innerHTML = '';
+            }
+            
+            // Create new comment element
+            const commentElement = document.createElement('div');
+            commentElement.className = 'review-card';
+            commentElement.innerHTML = `
+                <div class="reviewer">
+                    <div class="reviewer-name">${name}</div>
+                </div>
+                <div class="stars">
+                    ${'<i class="fas fa-star"></i>'.repeat(rating)}
+                    ${rating < 5 ? '<i class="far fa-star"></i>'.repeat(5 - rating) : ''}
+                </div>
+                <div class="review-content">
+                    <p>${comment}</p>
+                </div>
+                <div class="review-date">Posted just now</div>
+            `;
+            
+            // Add to the top of comments
+            commentsContainer.prepend(commentElement);
+            
+            // Reset form
+            commentForm.reset();
+            stars.forEach(star => star.classList.remove('active'));
+            ratingInput.value = '0';
+            
+            // Show success message
+            alert('Thank you for your review!');
+        });
+    </script>
+</body>
+</html>

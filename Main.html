@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THE QUIET STEP | Timeless Luxury</title>
+    <link rel="stylesheet" href="Main.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #1a1a1a;
+            --secondary: #d4af37;
+            --accent: #8b8b8b;
+            --light: #f8f8f8;
+            --dark: #121212;
+            --text: #333;
+            --text-light: #777;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Times New Roman', Times, serif;
+        }
+        
+        body {
+            color: var(--text);
+            background-color: var(--light);
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+        }
+        
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(212, 175, 55, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(212, 175, 55, 0.03) 0%, transparent 50%);
+            z-index: -1;
+            pointer-events: none;
+        }
+        
+        header {
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            background-color: rgba(248, 248, 248, 0.95);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(5px);
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: normal;
+            letter-spacing: 1px;
+            color: var(--primary);
+            text-align: center;
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+        
+        .logo::after {
+            content: "";
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 1px;
+            background: var(--secondary);
+        }
+        
+        .promo-banner {
+            background-color: var(--primary);
+            color: var(--light);
+            padding: 0.8rem;
+            text-align: center;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.5px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .promo-banner::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, 
+                transparent 0%, 
+                rgba(212, 175, 55, 0.2) 50%, 
+                transparent 100%);
+            animation: shine 3s infinite;
+        }
+        
+        @keyframes shine {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        
+        .promo-banner a {
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: normal;
+            margin-left: 0.5rem;
+            position: relative;
+        }
+        
+        .promo-banner a::after {
+            content: "";
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: var(--secondary);
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.3s ease;
+        }
+        
+        .promo-banner a:hover::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+        
+        .main-nav {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .user-nav {
+            display: flex;
+            gap: 1.5rem;
+        }
+        
+        nav a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: normal;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+        
+        nav a::after {
+            content: "";
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--secondary);
+            transition: width 0.3s ease;
+        }
+        
+        nav a:hover {
+            color: var(--primary);
+        }
+        
+        nav a:hover::after {
+            width: 100%;
+        }
+        
+        .category-header {
+            padding: 2rem;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        
+        .category-header h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            font-weight: normal;
+            letter-spacing: 1px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .category-header h2::after {
+            content: "";
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 1px;
+            background: var(--secondary);
+        }
+        
+        .subcategories {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .subcategories a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+        
+        .subcategories a:hover {
+            color: var(--primary);
+        }
+        
+        .filters {
+            display: flex;
+            justify-content: space-between;
+            padding: 1rem 2rem;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .filter-options {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .filter-options span {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            cursor: pointer;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+        
+        .filter-options span::after {
+            content: "";
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--secondary);
+            transition: width 0.3s ease;
+        }
+        
+        .filter-options span:hover {
+            color: var(--primary);
+        }
+        
+        .filter-options span:hover::after {
+            width: 100%;
+        }
+        
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+            padding: 2rem;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+        
+        .product-card {
+            background: white;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            padding: 1.5rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .product-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.03) 0%, transparent 100%);
+            z-index: 0;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+        
+        .product-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            font-weight: normal;
+            letter-spacing: 0.5px;
+            position: relative;
+        }
+        
+        .product-card .color {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin-bottom: 0.5rem;
+            font-style: italic;
+        }
+        
+        .product-card .price {
+            font-weight: normal;
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.5px;
+            color: var(--primary);
+        }
+        
+        .product-card .sale-price {
+            color: var(--text-light);
+            text-decoration: line-through;
+            margin-right: 0.5rem;
+        }
+        
+        .badge {
+            background-color: var(--primary);
+            color: white;
+            font-size: 0.7rem;
+            padding: 0.2rem 0.5rem;
+            border-radius: 1px;
+            display: inline-block;
+            margin-top: 0.5rem;
+            letter-spacing: 0.5px;
+        }
+        
+        .new-arrival {
+            background-color: var(--secondary);
+            color: var(--primary);
+        }
+        
+        .feature {
+            font-size: 0.8rem;
+            color: var(--secondary);
+            margin-top: 0.5rem;
+            letter-spacing: 0.5px;
+        }
+        
+        .quick-shop {
+            text-align: center;
+            margin: 3rem auto;
+            max-width: 800px;
+            padding: 0 2rem;
+        }
+        
+        .quick-shop-btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background-color: transparent;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: normal;
+            border: 1px solid var(--primary);
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .quick-shop-btn::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--primary);
+            transition: left 0.3s ease;
+            z-index: -1;
+        }
+        
+        .quick-shop-btn:hover {
+            color: var(--light);
+        }
+        
+        .quick-shop-btn:hover::before {
+            left: 0;
+        }
+        
+        .quick-shop .feature {
+            margin-top: 1rem;
+            display: block;
+        }
+        
+        .footer-nav {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            padding: 3rem 2rem;
+            background-color: var(--primary);
+            color: var(--light);
+        }
+        
+        .footer-nav-column h3 {
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+            font-weight: normal;
+            letter-spacing: 1px;
+            position: relative;
+        }
+        
+        .footer-nav-column h3::after {
+            content: "";
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 40px;
+            height: 1px;
+            background: var(--secondary);
+        }
+        
+        .footer-nav-column ul {
+            list-style: none;
+        }
+        
+        .footer-nav-column li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-nav-column a {
+            color: var(--light);
+            text-decoration: none;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+            transition: color 0.3s ease;
+            opacity: 0.8;
+        }
+        
+        .footer-nav-column a:hover {
+            color: var(--secondary);
+            opacity: 1;
+        }
+        
+        .footer-promo {
+            text-align: center;
+            padding: 2rem;
+            background-color: var(--dark);
+            color: var(--light);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .footer-promo::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, 
+                transparent 0%, 
+                rgba(212, 175, 55, 0.1) 50%, 
+                transparent 100%);
+            animation: shine 3s infinite;
+        }
+        
+        .footer-promo strong {
+            display: block;
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.5px;
+        }
+        
+        .footer-promo a {
+            color: var(--secondary);
+            text-decoration: none;
+            letter-spacing: 0.5px;
+            position: relative;
+        }
+        
+        .footer-promo a::after {
+            content: "";
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: var(--secondary);
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.3s ease;
+        }
+        
+        .footer-promo a:hover::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background-color: var(--dark);
+            color: var(--light);
+        }
+        
+        footer .logo {
+            color: var(--light);
+            margin-bottom: 1.5rem;
+        }
+        
+        footer .logo::after {
+            background: var(--secondary);
+        }
+        
+        footer nav {
+            justify-content: center;
+        }
+        
+        footer nav a {
+            color: var(--light);
+        }
+        
+        footer nav a:hover {
+            color: var(--secondary);
+        }
+        
+        @media (max-width: 768px) {
+            header {
+                padding: 1rem;
+            }
+            
+            .logo {
+                font-size: 1.5rem;
+                margin-bottom: 0.5rem;
+            }
+            
+            nav {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .main-nav, .user-nav {
+                width: 100%;
+                justify-content: space-around;
+                gap: 1rem;
+            }
+            
+            .category-header {
+                padding: 1.5rem 1rem;
+            }
+            
+            .filters {
+                padding: 1rem;
+                justify-content: center;
+            }
+            
+            .filter-options {
+                justify-content: center;
+            }
+            
+            .product-grid {
+                grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+                padding: 1rem;
+                gap: 1rem;
+            }
+            
+            .footer-nav {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                padding: 2rem 1rem;
+                gap: 1.5rem;
+            }
+        }
+        
+        /* Micro-interactions */
+        .product-card {
+            perspective: 1000px;
+        }
+        
+        .product-inner {
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+        
+        .product-card:hover .product-inner {
+            transform: rotateY(5deg);
+        }
+        
+        /* Scroll reveal animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">THE QUITE STEP</div>
+        <div class="promo-banner">
+            <strong>Status Isn't Shouted. It's Worn.</strong>  
+            <a href="/store/learn_more.html">Learn More</a>  
+        </div>
+        <nav>
+            <div class="main-nav">
+                <a href="#">MEN</a>
+                <a href="#">WOMEN</a>
+                <a href="#">BAGS & LEATHER GOODS</a>
+                <a href="#">SALE</a>
+                <a href="#">FEATURED SHOPS</a>
+            </div>
+            <div class="user-nav">
+                <a href="/store/register.html" id="signInBtn"><i class="fas fa-user"></i> Sign In</a>
+                <a href="#"><i class="fas fa-search"></i></a>
+                <a href="/store/Cart.html"><i class="fas fa-shopping-bag"></i></a>
+            </div>
+        </nav>
+    </header>
+    
+    <div class="category-header reveal">
+        <h2>LACE-UP</h2>
+        <div class="subcategories">
+            <a href="#">Lace-up</a>
+            <a href="#">Slip-Ons</a>
+            <a href="#">Golf</a>
+            <a href="#">New</a>
+            <a href="#">Sneakers</a>
+            <a href="#">Men's Sneakers</a>
+            <a href="#">new color</a>
+        </div>
+    </div>
+    
+    <div class="filters reveal">
+        <div class="filter-options">
+        <a href="https://www.google.com/maps/place/Pacific+Mall+Dehradun/@30.3664696,78.0677319,17z/data=!3m1!4b1!4m6!3m5!1s0x3908d7cbdc6e9d1b:0x7082f9fac370bdb7!8m2!3d30.366465!4d78.0703122!16s%2Fg%2F12hqm5l83?entry=ttu&g_ep=EgoyMDI1MDUyOC4wIKXMDSoASAFQAw%3D%3D" 
+        target="_blank" 
+        class="location-link">
+        <span>Pick Up at Store: pacific Mall</span>
+        </a>   
+        </div>
+        
+        
+        <div class="filter-options">
+            <span>FILTERS <i class="fas fa-sliders-h"></i></span>
+            <span>SORT <i class="fas fa-sort"></i></span>
+        </div>
+    </div>
+
+    <div class="product-grid">
+        <div class="product-card reveal">
+    <div class="product-inner">
+        <a href="/store/product_1.html">
+            <img src="images/product1.jpeg" alt="pro1" style="width:100%; height:200px; object-fit:cover;">
+        </a>
+        <h3>White Full Grain</h3>
+        <br>
+        <div class="price"><span class="sale-price">$150.00</span> $89.90</div>
+    </div>
+</div>
+        
+        <div class="product-card reveal">
+            <div class="product-inner">
+                <a href="/store/product_2.html">
+            <img src="images/pro3.jpeg" alt="pro2" style="width:100%; height:200px; object-fit:cover;">
+        </a>
+        <h3>Light brown Sneakers</h3>
+        <br>
+        <div class="price"><span class="sale-price">$150.00</span> $89.90</div>
+        <span class="badge new-arrival">new arrival</span>
+    </div>
+        </div>
+        
+        <div class="product-card reveal">
+            <div class="product-inner">
+                <a href="/store/product_3.html">
+            <img src="images/pro2.jpeg" alt="pro3" style="width:100%; height:200px; object-fit:cover;">
+        </a>
+        <h3>Brown oxford full grain</h3>
+        <br>
+        <div class="price"><span class="sale-price">$150.00</span> $89.90</div>
+    </div>
+        </div>
+        
+        <div class="product-card reveal">
+            <div class="product-inner">
+               <a href="/store/product_4.html">
+            <img src="images/pro4.jpeg" alt="pro4" style="width:100%; height:200px; object-fit:cover;">
+            </a>
+                <h3>Navy Kiltie</h3>
+                <br>
+                <div class="price"><span class="sale-price">$150.00</span> $89.95</div>
+                <span class="badge new-arrival">new arrival</span>
+            </div>
+        </div>
+        
+        <div class="product-card reveal">
+            <div class="product-inner">
+            <a href="/store/product_5.html">
+            <img src="images/pro5.jpeg" alt="pro5" style="width:100%; height:200px; object-fit:cover;">
+            </a>
+                <h3>McCurry 2 Kiltie Plain Toe</h3>
+                <div class="color">Beige Kiltie</div>
+                <div class="price">$133.00</div>
+                <span class="badge new-arrival">new arrival</span>
+            </div>
+        </div>
+        
+        <div class="product-card reveal">
+            <div class="product-inner">
+            <a href="/store/product_6.html">
+            <img src="images/pro6.jpeg" alt="pro6" style="width:100%; height:200px; object-fit:cover;">
+            </a>
+                <h3>Dawson Perforated U-Throat</h3>
+                <div class="color">White Full Grain</div>
+                <div class="price">$145.80</div>
+            </div>
+        </div>
+        
+        <div class="product-card reveal">
+            <div class="product-inner">
+            <a href="/store/product_7.html">
+            <img src="images/pro7.jpeg" alt="pro7" style="width:100%; height:200px; object-fit:cover;">
+            </a>
+                <h3>McCurry 2 Kiltie Plain Toe</h3>
+                <div class="color">Navy Kiltie</div>
+                <div class="price">$153.00</div>
+                <span class="badge new-arrival">new arrival</span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="quick-shop reveal">
+        <a href="#" class="quick-shop-btn">SHOP NEW SNEAKERS</a>
+        <span class="feature">available in wide</span>
+    </div>
+    
+    <div class="product-grid">
+        <div class="product-card reveal">
+            <div class="product-inner">
+            <a href="/store/product_8.html">
+            <img src="images/pronew.jpeg" alt="pro8" style="width:100%; height:200px; object-fit:cover;">
+            </a>
+                <h3>Devone Perforated U-Throat</h3>
+                <div class="color">Black Full Grain</div>
+                <div class="price">$146.00</div>
+                <div class="feature">available in wide</div>
+            </div>
+        </div>
+        
+        <div class="product-card reveal">
+            <div class="product-inner">
+            <a href="/store/product_9.html">
+            <img src="images/pro9.jpeg" alt="pro9" style="width:100%; height:200px; object-fit:cover;">
+            </a>
+                <h3>Brayson Knit Plain Toe</h3>
+                <div class="color">Taupe Knit</div>
+                <div class="price"><span class="sale-price">$138.00</span> $39.29</div>
+                <span class="badge new-arrival">new arrival</span>
+            </div>
+        </div>
+        
+        <div class="product-card reveal">
+            <div class="product-inner">
+            <a href="/store/product_10.html">
+            <img src="images/pro10.jpeg" alt="pro10" style="width:100%; height:200px; object-fit:cover;">
+            </a>
+                <h3>Amherst 2.0 Knit Plain Toe</h3>
+                <div class="color">Navy Knit</div>
+                <div class="price">$123.00</div>
+            </div>
+        </div>
+        
+        <div class="product-card reveal">
+            <div class="product-inner">
+            <a href="/store/product_11.html">
+            <img src="images/pro11.jpeg" alt="pro11" style="width:100%; height:200px; object-fit:cover;">
+            </a>
+                <h3>Resilient Perforated U-Throat</h3>
+                <div class="color">White Full Grain</div>
+                <div class="price">$136.00</div>
+                <span class="badge new-arrival">new arrival</span>
+            </div>
+        </div>
+        
+        <div class="product-card reveal">
+            <div class="product-inner">
+            <a href="/store/product_12.html">
+            <img src="images/pro12.jpeg" alt="pro12" style="width:100%; height:200px; object-fit:cover;">
+            </a>
+                <h3>Anders Stretch Lace-to-Toe Slip-On</h3>
+                <div class="color">White Full Grain</div>
+                <div class="price">$148.00</div>
+            </div>
+        </div>
+        
+        <div class="product-card reveal">
+            <div class="product-inner">
+            <a href="/store/product_13.html">
+            <img src="images/pro13.jpeg" alt="pro13" style="width:100%; height:200px; object-fit:cover;">
+            </a>
+                <h3>Brayson Knit Plain Toe</h3>
+                <div class="color">Gray Knit</div>
+                <div class="price"><span class="sale-price">$163.00</span> $59.29</div>
+                <span class="badge new-arrival">new arrival</span>
+            </div>
+        </div>
+        
+        <div class="product-card reveal">
+            <div class="product-inner">
+            <a href="/store/product_14.html">
+            <img src="images/pro14.jpeg" alt="pro14" style="width:100%; height:200px; object-fit:cover;">
+            </a>
+                <h3>Amherst 1.2 Knit Plain Toe</h3>
+                <div class="color">Gray Heathered Knit</div>
+                <div class="price">$129.00</div>
+                <div class="feature">waterproof</div>
+            </div>
+        </div>
+        
+        <div class="product-card reveal">
+            <div class="product-inner">
+            <a href="/store/product_15.html">
+            <img src="images/pro15first.jpeg" alt="pro15" style="width:100%; height:200px; object-fit:cover;">
+            </a>
+                <h3>XC66-H1-Luxe Hybrid</h3>
+                <div class="color">Whiskeyburg Full Grain</div>
+                <div class="price">$159.00</div>
+                <span class="badge new-arrival">new arrival</span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="footer-nav">
+        <div class="footer-nav-column">
+            <h3>Shoes</h3>
+            <ul>
+                <li><a href="#">New Arrivals</a></li>
+                <li><a href="#">Lace-Ups</a></li>
+                <li><a href="#">Slip-Ons & Loafers</a></li>
+                <li><a href="#">Sneakers</a></li>
+                <li><a href="#">Golf</a></li>
+                <li><a href="#">Boots</a></li>
+                <li><a href="#">Sandals</a></li>
+                <li><a href="#">Dress Shoes</a></li>
+                <li><a href="#">Formal Shoes</a></li>
+                <li><a href="#">Special Value</a></li>
+                <li><a href="#">Sale</a></li>
+            </ul>
+        </div>
+        
+        <div class="footer-nav-column">
+            <h3>Apparel</h3>
+            <ul>
+                <li><a href="#">New Arrivals</a></li>
+                <li><a href="#">Shirts</a></li>
+                <li><a href="#">Short-Sleeve Shirts</a></li>
+                <li><a href="#">Polos & Tees</a></li>
+                <li><a href="#">Sweaters & Knits</a></li>
+                <li><a href="#">Coats, Jackets & Vests</a></li>
+                <li><a href="#">Blazers</a></li>
+                <li><a href="#">Shorts</a></li>
+                <li><a href="#">Pants & Jeans</a></li>
+                <li><a href="#">Golf</a></li>
+                <li><a href="#">Loungewear</a></li>
+            </ul>
+        </div>
+        
+        <div class="footer-nav-column">
+            <h3>Accessories</h3>
+            <ul>
+                <li><a href="#">Belts</a></li>
+                <li><a href="#">Backpacks & Briefcases</a></li>
+                <li><a href="#">Travel Accessories</a></li>
+                <li><a href="#">Wallets</a></li>
+                <li><a href="#">Socks</a></li>
+                <li><a href="#">Shoe Care & Accessories</a></li>
+            </ul>
+        </div>
+        
+        <div class="footer-nav-column">
+            <h3>Featured</h3>
+            <ul>
+                <li><a href="#">Father's Day Gift Guide</a></li>
+                <li><a href="#">New Arrivals</a></li>
+                <li><a href="#">Wear to Work</a></li>
+            </ul>
+        </div>
+        
+        <div class="footer-nav-column">
+            <h3>Women's Shoes</h3>
+            <ul>
+                <li><a href="#">Sneakers</a></li>
+                <li><a href="#">Mules & Loafers</a></li>
+                <li><a href="#">Boots & Booties</a></li>
+                <li><a href="#">Heels & Platform Wedges</a></li>
+                <li><a href="#">Sandals</a></li>
+                <li><a href="#">Sale</a></li>
+            </ul>
+        </div>
+        
+        <div class="footer-nav-column">
+            <h3>Apparel & Accessories</h3>
+            <ul>
+                <li><a href="#">Shirts & Sweaters</a></li>
+                <li><a href="#">Coats, Jackets & Vests</a></li>
+                <li><a href="#">Blazers & Pants</a></li>
+                <li><a href="#">Dresses</a></li>
+                <li><a href="#">Socks</a></li>
+                <li><a href="#">Totes</a></li>
+            </ul>
+        </div>
+        
+        <div class="footer-nav-column">
+            <h3>Featured</h3>
+            <ul>
+                <li><a href="#">New Arrivals</a></li>
+                <li><a href="#">End of Season Sale</a></li>
+                <li><a href="#">NEW ARRIVALS</a></li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="footer-promo">
+        <strong>True Style Doesn't Wait. Neither Should You.</strong>  
+        <a href="#">Learn More</a>
+    </div>
+    
+    <footer>
+        <div class="logo">THE QUITE STEP</div>
+        <nav>
+            <div class="main-nav">
+                <a href="#">MEN</a>
+                <a href="#">WOMEN</a>
+                <a href="#">BAGS & LEATHER GOODS</a>
+                <a href="#">SALE</a>
+                <a href="#">FEATURED SHOPS</a>
+                <a href="#">FATHER'S DAY SALE</a>
+            </div>
+        </nav>
+    </footer>
+
+    <script>
+        // Scroll reveal animation
+        const scrollReveal = () => {
+            const reveals = document.querySelectorAll('.reveal');
+            
+            for (let i = 0; i < reveals.length; i++) {
+                const windowHeight = window.innerHeight;
+                const revealTop = reveals[i].getBoundingClientRect().top;
+                const revealPoint = 150;
+                
+                if (revealTop < windowHeight - revealPoint) {
+                    reveals[i].classList.add('active');
+                } else {
+                    reveals[i].classList.remove('active');
+                }
+            }
+        };
+        
+        window.addEventListener('scroll', scrollReveal);
+        window.addEventListener('load', scrollReveal);
+        
+        // Product card tilt effect
+        const productCards = document.querySelectorAll('.product-card');
+        
+        productCards.forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const xAxis = (window.innerWidth / 2 - e.pageX) / 15;
+                const yAxis = (window.innerHeight / 2 - e.pageY) / 15;
+                card.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
+            });
+            
+            card.addEventListener('mouseenter', () => {
+                card.style.transition = 'none';
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transition = 'transform 0.5s ease';
+                card.style.transform = 'rotateY(0deg) rotateX(0deg)';
+            });
+        });
+    </script>
+</body>
+</html>

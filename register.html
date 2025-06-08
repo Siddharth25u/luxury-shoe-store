@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THE QUIET STEP | Luxury Footwear</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --gold: #d4af37;
+            --dark-gold: #b8860b;
+            --cream: #f8f4e9;
+            --ivory: #fffdf5;
+            --charcoal: #1a1a1a;
+            --walnut: #382e1e;
+            --burgundy: #5c2c45;
+            --text: #333;
+            --light-text: #777;
+            --shadow: rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--cream);
+            color: var(--text);
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200"><rect width="200" height="200" fill="%23f8f4e9"/><path d="M0,0 L200,200 M200,0 L0,200" stroke="%23eae3d0" stroke-width="0.5"/></svg>');
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            display: flex;
+            max-width: 1100px;
+            width: 100%;
+            box-shadow: 0 15px 50px var(--shadow);
+            border-radius: 12px;
+            overflow: hidden;
+            height: 700px;
+        }
+
+        .brand-section {
+            flex: 1;
+            background: linear-gradient(135deg, var(--charcoal) 0%, var(--walnut) 100%);
+            color: var(--ivory);
+            padding: 60px 40px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .brand-section::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="none" stroke="%23d4af37" stroke-width="0.5" stroke-dasharray="5,5"/></svg>');
+            opacity: 0.1;
+        }
+
+        .brand-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .logo-icon {
+            font-size: 28px;
+            color: var(--gold);
+            margin-right: 15px;
+        }
+
+        .logo h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+            font-size: 28px;
+            letter-spacing: 1.5px;
+        }
+
+        .tagline {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 42px;
+            font-weight: 500;
+            line-height: 1.3;
+            margin: 40px 0;
+            max-width: 400px;
+        }
+
+        .tagline span {
+            color: var(--gold);
+            position: relative;
+        }
+
+        .tagline span::after {
+            content: "";
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--gold);
+        }
+
+        .benefits {
+            margin-top: 30px;
+            list-style: none;
+        }
+
+        .benefits li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+
+        .benefits i {
+            color: var(--gold);
+            margin-right: 15px;
+            font-size: 18px;
+        }
+
+        .form-section {
+            flex: 1;
+            background: var(--ivory);
+            padding: 60px 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .form-container {
+            max-width: 400px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .tabs {
+            display: flex;
+            margin-bottom: 40px;
+            border-bottom: 1px solid #e0d9c7;
+        }
+
+        .tab {
+            padding: 12px 25px;
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 18px;
+            position: relative;
+            color: var(--light-text);
+            transition: all 0.3s ease;
+        }
+
+        .tab.active {
+            color: var(--charcoal);
+            font-weight: 600;
+        }
+
+        .tab.active::after {
+            content: "";
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--gold);
+        }
+
+        .form-header {
+            margin-bottom: 30px;
+        }
+
+        .form-header h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+            font-size: 32px;
+            margin-bottom: 10px;
+            color: var(--charcoal);
+        }
+
+        .form-header p {
+            color: var(--light-text);
+            font-size: 15px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--charcoal);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 14px 15px;
+            border: 1px solid #e0d9c7;
+            background: var(--ivory);
+            border-radius: 4px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--gold);
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+        }
+
+        .password-toggle {
+            position: absolute;
+            right: 12px;
+            top: 40px;
+            color: var(--light-text);
+            cursor: pointer;
+        }
+
+        .form-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 10px;
+            font-size: 14px;
+        }
+
+        .remember {
+            display: flex;
+            align-items: center;
+        }
+
+        .remember input {
+            margin-right: 8px;
+        }
+
+        .forgot-password {
+            color: var(--burgundy);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .forgot-password:hover {
+            color: var(--gold);
+            text-decoration: underline;
+        }
+
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 16px;
+            background: var(--charcoal);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 30px;
+        }
+
+        .btn:hover {
+            background: var(--gold);
+            color: var(--charcoal);
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            margin: 30px 0;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: "";
+            flex: 1;
+            border-bottom: 1px solid #e0d9c7;
+        }
+
+        .divider span {
+            padding: 0 15px;
+            color: var(--light-text);
+            font-size: 14px;
+        }
+
+        .social-login {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .social-btn {
+            flex: 1;
+            padding: 12px;
+            border: 1px solid #e0d9c7;
+            background: white;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .social-btn i {
+            margin-right: 8px;
+            font-size: 18px;
+        }
+
+        .social-btn:hover {
+            border-color: var(--gold);
+            background: rgba(212, 175, 55, 0.05);
+        }
+
+        .signup-link {
+            text-align: center;
+            font-size: 15px;
+            margin-top: 20px;
+            color: var(--light-text);
+        }
+
+        .signup-link a {
+            color: var(--burgundy);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .signup-link a:hover {
+            color: var(--gold);
+            text-decoration: underline;
+        }
+
+        .copyright {
+            text-align: center;
+            font-size: 13px;
+            color: rgba(255, 253, 245, 0.7);
+            margin-top: 30px;
+        }
+
+        /* Responsive design */
+        @media (max-width: 900px) {
+            .container {
+                flex-direction: column;
+                height: auto;
+            }
+            
+            .brand-section {
+                padding: 40px 30px;
+            }
+            
+            .tagline {
+                font-size: 32px;
+            }
+            
+            .form-section {
+                padding: 40px 30px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .form-footer {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+            
+            .social-login {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Brand Section -->
+        <div class="brand-section">
+            <div class="brand-content">
+                <div class="logo">
+                    <div class="logo-icon">
+                        <i class="fa-solid fa-crown"></i>
+                    </div>
+                    <h1>THE QUITE STEP</h1>
+                </div>
+                
+                <div class="tagline">
+                    Shoes That Move You
+                    <span>Log In & Explore.</span>
+                </div>
+                
+                <ul class="benefits">
+                    <li>
+                        <i class="fa-solid fa-check"></i>
+                        Exclusive access to limited edition collections
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-check"></i>
+                        Members-only sales and promotions
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-check"></i>
+                        Early previews of new arrivals
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-check"></i>
+                        Complimentary leather care advice
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="copyright">
+                © 2023 THE QUITE STEP. All rights reserved.
+            </div>
+        </div>
+        
+        <!-- Form Section -->
+        <div class="form-section">
+            <div class="form-container">
+                <div class="tabs">
+                    <div class="tab active">Sign In</div>
+                    <div class="tab">Register</div>
+                </div>
+                
+                <div class="form-header">
+                    <h2>Welcome Back</h2>
+                    <p>Sign in to access your account and continue your journey with us</p>
+                </div>
+                
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" class="form-control" placeholder="your@email.com" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" class="form-control" placeholder="Enter your password" required>
+                        <span class="password-toggle">
+                            <i class="fa-regular fa-eye"></i>
+                        </span>
+                    </div>
+                    
+                    <div class="form-footer">
+                        <div class="remember">
+                            <input type="checkbox" id="remember">
+                            <label for="remember">Remember me</label>
+                        </div>
+                        <a href="#" class="forgot-password">Forgot Password?</a>
+                    </div>
+                    
+                    <button type="submit" class="btn">Sign In</button>
+                </form>
+                
+                <div class="divider">
+                    <span>or continue with</span>
+                </div>
+                
+                <div class="social-login">
+                    <div class="social-btn">
+                        <i class="fa-brands fa-google"></i>
+                        Google
+                    </div>
+                    <div class="social-btn">
+                        <i class="fa-brands fa-apple"></i>
+                        Apple
+                    </div>
+                </div>
+                
+                <div class="signup-link">
+                    Don't have an account? <a href="#">Register now</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Toggle password visibility
+        document.querySelector('.password-toggle').addEventListener('click', function() {
+            const passwordInput = document.getElementById('password');
+            const icon = this.querySelector('i');
+            
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                icon.classList.replace('fa-eye', 'fa-eye-slash');
+            } else {
+                passwordInput.type = 'password';
+                icon.classList.replace('fa-eye-slash', 'fa-eye');
+            }
+        });
+        
+        // Tab switching functionality
+        const tabs = document.querySelectorAll('.tab');
+        tabs.forEach(tab => {
+            tab.addEventListener('click', function() {
+                tabs.forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+                
+                if (this.textContent === 'Register') {
+                    document.querySelector('.form-header h2').textContent = 'Create Account';
+                    document.querySelector('.form-header p').textContent = 'Join our exclusive community to access premium benefits';
+                    document.querySelector('.btn').textContent = 'Register';
+                    document.querySelector('.signup-link').innerHTML = 'Already have an account? <a href="#">Sign in</a>';
+                } else {
+                    document.querySelector('.form-header h2').textContent = 'Welcome Back';
+                    document.querySelector('.form-header p').textContent = 'Sign in to access your account and continue your journey with us';
+                    document.querySelector('.btn').textContent = 'Sign In';
+                    document.querySelector('.signup-link').innerHTML = 'Don\'t have an account? <a href="#">Register now</a>';
+                }
+            });
+        });
+        
+        // Form submission
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Form submission would be processed here. This is a frontend demo.');
+        });
+    </script>
+</body>
+</html>

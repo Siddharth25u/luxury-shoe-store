@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Story | THE QUIET STEP</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #1a1a1a;
+            --secondary: #d4af37;
+            --accent: #8b8b8b;
+            --light: #f8f8f8;
+            --dark: #121212;
+            --text: #333;
+            --text-light: #777;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Times New Roman', Times, serif;
+        }
+        
+        body {
+            color: var(--text);
+            background-color: var(--light);
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+        }
+        
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(212, 175, 55, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(212, 175, 55, 0.03) 0%, transparent 50%);
+            z-index: -1;
+            pointer-events: none;
+        }
+        
+        header {
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            background-color: rgba(248, 248, 248, 0.95);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(5px);
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: normal;
+            letter-spacing: 1px;
+            color: var(--primary);
+            text-align: center;
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+        
+        .logo::after {
+            content: "";
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 1px;
+            background: var(--secondary);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+        
+        .main-nav {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .user-nav {
+            display: flex;
+            gap: 1.5rem;
+        }
+        
+        nav a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: normal;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+        
+        nav a::after {
+            content: "";
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--secondary);
+            transition: width 0.3s ease;
+        }
+        
+        nav a:hover {
+            color: var(--primary);
+        }
+        
+        nav a:hover::after {
+            width: 100%;
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 70vh;
+            min-height: 500px;
+            background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), 
+                        url('https://images.unsplash.com/photo-1600269452121-4f2416e55c28?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            margin-bottom: 5rem;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: normal;
+            margin-bottom: 1.5rem;
+            letter-spacing: 2px;
+            line-height: 1.2;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            letter-spacing: 0.5px;
+        }
+        
+        /* About Sections */
+        .section {
+            max-width: 1200px;
+            margin: 0 auto 6rem;
+            padding: 0 2rem;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .section-header h2 {
+            font-size: 2.5rem;
+            font-weight: normal;
+            margin-bottom: 1.5rem;
+            letter-spacing: 1px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-header h2::after {
+            content: "";
+            position: absolute;
+            bottom: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 1px;
+            background: var(--secondary);
+        }
+        
+        .section-header p {
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            color: var(--text-light);
+        }
+        
+        /* Story Grid */
+        .story-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+        
+        .story-card {
+            background: white;
+            padding: 2rem;
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.05);
+            border-top: 3px solid var(--secondary);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .story-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .story-card h3 {
+            font-size: 1.5rem;
+            font-weight: normal;
+            margin-bottom: 1rem;
+            letter-spacing: 0.5px;
+            color: var(--primary);
+        }
+        
+        .story-card p {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+        }
+        
+        .story-card .icon {
+            font-size: 2rem;
+            color: var(--secondary);
+            margin-bottom: 1.5rem;
+        }
+        
+        /* Craftsmanship Section */
+        .craftsmanship {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4rem;
+            align-items: center;
+            margin-bottom: 6rem;
+        }
+        
+        .craftsmanship-image {
+            flex: 1;
+            min-width: 300px;
+            height: 500px;
+            background: url('https://images.unsplash.com/photo-1595341888016-a392ef81b7de?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1658&q=80') no-repeat center center/cover;
+            box-shadow: 20px 20px 0 0 rgba(212, 175, 55, 0.1);
+        }
+        
+        .craftsmanship-content {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .craftsmanship-content h2 {
+            font-size: 2rem;
+            font-weight: normal;
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.5px;
+            color: var(--primary);
+        }
+        
+        .craftsmanship-content p {
+            margin-bottom: 1.5rem;
+            color: var(--text-light);
+        }
+        
+        .craftsmanship-stats {
+            display: flex;
+            gap: 2rem;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+        
+        .stat-item {
+            flex: 1;
+            min-width: 150px;
+        }
+        
+        .stat-item h3 {
+            font-size: 2.5rem;
+            font-weight: normal;
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-item p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            letter-spacing: 0.5px;
+        }
+        
+        /* Team Section */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+        
+        .team-member {
+            text-align: center;
+        }
+        
+        .team-member-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            overflow: hidden;
+            border: 3px solid var(--secondary);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .team-member-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .team-member h3 {
+            font-size: 1.3rem;
+            font-weight: normal;
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.5px;
+        }
+        
+        .team-member p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+        
+        .social-links a {
+            color: var(--text-light);
+            transition: color 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            color: var(--secondary);
+        }
+        
+        /* Values Section */
+        .values-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+        
+        .value-card {
+            flex: 1;
+            min-width: 300px;
+            padding: 2rem;
+            background: white;
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .value-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: var(--secondary);
+        }
+        
+        .value-card h3 {
+            font-size: 1.5rem;
+            font-weight: normal;
+            margin-bottom: 1rem;
+            letter-spacing: 0.5px;
+            color: var(--primary);
+        }
+        
+        .value-card p {
+            color: var(--text-light);
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            background: var(--primary);
+            color: white;
+            padding: 5rem 2rem;
+            text-align: center;
+            margin-bottom: 0;
+        }
+        
+        .cta-section h2 {
+            font-size: 2.5rem;
+            font-weight: normal;
+            margin-bottom: 1.5rem;
+            letter-spacing: 1px;
+        }
+        
+        .cta-section p {
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        .cta-btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: var(--secondary);
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 1rem;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            border: 1px solid var(--secondary);
+        }
+        
+        .cta-btn:hover {
+            background: transparent;
+            color: var(--secondary);
+        }
+        
+        /* Footer */
+        .footer-nav {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            padding: 3rem 2rem;
+            background-color: var(--primary);
+            color: var(--light);
+        }
+        
+        .footer-nav-column h3 {
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+            font-weight: normal;
+            letter-spacing: 1px;
+            position: relative;
+        }
+        
+        .footer-nav-column h3::after {
+            content: "";
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 40px;
+            height: 1px;
+            background: var(--secondary);
+        }
+        
+        .footer-nav-column ul {
+            list-style: none;
+        }
+        
+        .footer-nav-column li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-nav-column a {
+            color: var(--light);
+            text-decoration: none;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+            transition: color 0.3s ease;
+            opacity: 0.8;
+        }
+        
+        .footer-nav-column a:hover {
+            color: var(--secondary);
+            opacity: 1;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background-color: var(--dark);
+            color: var(--light);
+        }
+        
+        footer .logo {
+            color: var(--light);
+            margin-bottom: 1.5rem;
+        }
+        
+        footer .logo::after {
+            background: var(--secondary);
+        }
+        
+        footer nav {
+            justify-content: center;
+        }
+        
+        footer nav a {
+            color: var(--light);
+        }
+        
+        footer nav a:hover {
+            color: var(--secondary);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .craftsmanship {
+                flex-direction: column;
+            }
+            
+            .craftsmanship-image {
+                width: 100%;
+            }
+            
+            .section-header h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">THE QUIET STEP</div>
+        <nav>
+            <div class="main-nav">
+                <a href="#">MEN</a>
+                <a href="#">WOMEN</a>
+                <a href="#">BAGS & LEATHER GOODS</a>
+                <a href="#">SALE</a>
+                <a href="#">FEATURED SHOES</a>
+            </div>
+            <div class="user-nav">
+                <a href="/store/register.html"><i class="fas fa-user"></i> Sign In</a>
+                <a href="#"><i class="fas fa-search"></i></a>
+                <a href="/store/Cart.html"><i class="fas fa-shopping-bag"></i></a>
+            </div>
+        </nav>
+    </header>
+    
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Status Isn't Shouted. It's Worn.</h1>
+            <p>Discover the art of quiet luxury through exceptional craftsmanship and timeless design</p>
+        </div>
+    </section>
+    
+    <section class="section">
+        <div class="section-header">
+            <h2>Our Story</h2>
+            <p>Founded in 2015, THE QUIET STEP began as a vision to create footwear that speaks through quality rather than logos</p>
+        </div>
+        
+        <div class="story-grid">
+            <div class="story-card">
+                <div class="icon">
+                    <i class="fas fa-seedling"></i>
+                </div>
+                <h3>Humble Beginnings</h3>
+                <p>What started in a small workshop in Florence has grown into a global symbol of understated elegance, without losing our artisanal roots.</p>
+            </div>
+            
+            <div class="story-card">
+                <div class="icon">
+                    <i class="fas fa-chess-knight"></i>
+                </div>
+                <h3>The Philosophy</h3>
+                <p>We believe true luxury doesn't need to announce itself. Our designs reveal their quality to those who appreciate fine craftsmanship.</p>
+            </div>
+            
+            <div class="story-card">
+                <div class="icon">
+                    <i class="fas fa-globe"></i>
+                </div>
+                <h3>Global Recognition</h3>
+                <p>From Milan to Tokyo, our shoes have found their way into the wardrobes of discerning individuals who value substance over status symbols.</p>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section">
+        <div class="craftsmanship">
+            <div class="craftsmanship-image"></div>
+            <div class="craftsmanship-content">
+                <h2>The Art of Craftsmanship</h2>
+                <p>Each pair of THE QUIET STEP shoes represents over 200 hours of meticulous handcrafting by our master shoemakers in Italy. We use only the finest full-grain leathers that age beautifully with time.</p>
+                <p>Our signature Goodyear welt construction ensures durability while allowing for resoling, making our shoes companions for decades rather than seasons.</p>
+                
+                <div class="craftsmanship-stats">
+                    <div class="stat-item">
+                        <h3>127</h3>
+                        <p>Steps in our shoemaking process</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>18</h3>
+                        <p>Years of experience per artisan</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>5</h3>
+                        <p>Generations of craftsmanship</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section">
+        <div class="section-header">
+            <h2>Our Materials</h2>
+            <p>We source only the world's finest materials, treating them with respect to create footwear of uncompromising quality</p>
+        </div>
+        
+        <div class="values-container">
+            <div class="value-card">
+                <h3>Italian Leather</h3>
+                <p>Our full-grain leather comes from small tanneries in Tuscany that have perfected their craft over centuries. Each hide is hand-selected for its character and durability.</p>
+            </div>
+            <div class="value-card">
+                <h3>Precious Metals</h3>
+                <p>Our hardware is crafted from solid brass and sterling silver, developing a rich patina over time that tells the story of your journey.</p>
+            </div>
+            <div class="value-card">
+                <h3>Silk Linings</h3>
+                <p>The interior of our shoes feature breathable silk linings that provide unparalleled comfort while wicking moisture away from the foot.</p>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section">
+        <div class="section-header">
+            <h2>Meet Our Artisans</h2>
+            <p>The hands behind THE QUIET STEP - masters of their craft who put soul into every stitch</p>
+        </div>
+        
+        <div class="team-grid">
+            <div class="team-member">
+                <div class="team-member-image">
+                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" alt="Marco Bianchi">
+                </div>
+                <h3>Marco Bianchi</h3>
+                <p>Master Leather Craftsman</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+            
+            <div class="team-member">
+                <div class="team-member-image">
+                    <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" alt="Giovanna Russo">
+                </div>
+                <h3>Giovanna Russo</h3>
+                <p>Design Director</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+            
+            <div class="team-member">
+                <div class="team-member-image">
+                    <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" alt="Elena Conti">
+                </div>
+                <h3>Elena Conti</h3>
+                <p>Pattern Maker</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="cta-section">
+        <h2>Experience Quiet Luxury</h2>
+        <p>Discover footwear that speaks through quality, not logos. Join those who appreciate the art of understated elegance.</p>
+        <a href="#" class="cta-btn">SHOP THE COLLECTION</a>
+    </section>
+    
+    <div class="footer-nav">
+        <div class="footer-nav-column">
+            <h3>Shoes</h3>
+            <ul>
+                <li><a href="#">New Arrivals</a></li>
+                <li><a href="#">Lace-Ups</a></li>
+                <li><a href="#">Slip-Ons & Loafers</a></li>
+                <li><a href="#">Sneakers</a></li>
+                <li><a href="#">Golf</a></li>
+                <li><a href="#">Boots</a></li>
+                <li><a href="#">Sandals</a></li>
+            </ul>
+        </div>
+        
+        <div class="footer-nav-column">
+            <h3>Apparel</h3>
+            <ul>
+                <li><a href="#">New Arrivals</a></li>
+                <li><a href="#">Shirts</a></li>
+                <li><a href="#">Polos & Tees</a></li>
+                <li><a href="#">Sweaters & Knits</a></li>
+                <li><a href="#">Coats & Jackets</a></li>
+                <li><a href="#">Pants & Jeans</a></li>
+            </ul>
+        </div>
+        
+        <div class="footer-nav-column">
+            <h3>Accessories</h3>
+            <ul>
+                <li><a href="#">Belts</a></li>
+                <li><a href="#">Leather Goods</a></li>
+                <li><a href="#">Wallets</a></li>
+                <li><a href="#">Socks</a></li>
+                <li><a href="#">Shoe Care</a></li>
+            </ul>
+        </div>
+        
+        <div class="footer-nav-column">
+            <h3>About</h3>
+            <ul>
+                <li><a href="#">Our Story</a></li>
+                <li><a href="#">Craftsmanship</a></li>
+                <li><a href="#">Sustainability</a></li>
+                <li><a href="#">Press</a></li>
+                <li><a href="#">Careers</a></li>
+            </ul>
+        </div>
+        
+        <div class="footer-nav-column">
+            <h3>Client Services</h3>
+            <ul>
+                <li><a href="#">Contact Us</a></li>
+                <li><a href="#">Shipping & Returns</a></li>
+                <li><a href="#">Size Guide</a></li>
+                <li><a href="#">Store Locator</a></li>
+                <li><a href="#">Book an Appointment</a></li>
+            </ul>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="logo">THE QUIET STEP</div>
+        <nav>
+            <div class="main-nav">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Cookie Settings</a>
+            </div>
+        </nav>
+        <p style="margin-top: 1.5rem; font-size: 0.8rem; color: rgba(255,255,255,0.6);">© 2023 THE QUIET STEP. All rights reserved.</p>
+    </footer>
+</body>
+</html>

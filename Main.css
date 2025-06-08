@@ -1,0 +1,286 @@
+/* ===== PRODUCT CARD ANIMATIONS ===== */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+    padding: 2rem;
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+.product-card {
+    background: var(--light);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    padding: 0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+    overflow: hidden;
+    position: relative;
+    transform: translateY(0) scale(1);
+    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    opacity: 0;
+    animation: cardEntrance 0.8s forwards;
+    will-change: transform, opacity;
+}
+
+@keyframes cardEntrance {
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Staggered entrance animation */
+.product-card:nth-child(1) { animation-delay: 0.1s; }
+.product-card:nth-child(2) { animation-delay: 0.2s; }
+.product-card:nth-child(3) { animation-delay: 0.3s; }
+.product-card:nth-child(4) { animation-delay: 0.4s; }
+.product-card:nth-child(5) { animation-delay: 0.5s; }
+.product-card:nth-child(6) { animation-delay: 0.6s; }
+.product-card:nth-child(7) { animation-delay: 0.7s; }
+.product-card:nth-child(8) { animation-delay: 0.8s; }
+
+.product-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 
+        0 12px 24px rgba(0, 0, 0, 0.1),
+        0 0 0 1px rgba(192, 160, 98, 0.15);
+    z-index: 2;
+}
+
+/* Image container with parallax effect */
+.product-image-container {
+    position: relative;
+    overflow: hidden;
+    height: 280px;
+    background: var(--patina);
+    transform-style: preserve-3d;
+}
+
+.product-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.product-card:hover .product-image {
+    transform: scale(1.05) translateY(-2%);
+}
+
+/* Glow effect on hover */
+.product-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, 
+                rgba(192, 160, 98, 0.08) 0%, 
+                transparent 70%);
+    opacity: 0;
+    transition: opacity 0.6s ease;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.product-card:hover::before {
+    opacity: 1;
+}
+
+/* Floating tag animation */
+.badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: var(--secondary);
+    color: var(--primary);
+    padding: 0.3rem 0.8rem;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    z-index: 2;
+    animation: floatTag 4s ease-in-out infinite;
+}
+
+@keyframes floatTag {
+    0%, 100% { transform: translateY(0) rotate(-2deg); }
+    50% { transform: translateY(-6px) rotate(2deg); }
+}
+
+/* Color swatches pop-in */
+.color-options {
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    opacity: 0;
+    transform: translateY(15px);
+    transition: all 0.5s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+    z-index: 2;
+}
+
+.product-card:hover .color-options {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.color-swatch {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 1px solid rgba(0,0,0,0.1);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    transform: scale(0);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.product-card:hover .color-swatch {
+    transform: scale(1);
+    transition-delay: calc(0.1s * var(--i, 1));
+}
+
+.color-swatch:hover {
+    transform: scale(1.2) !important;
+    box-shadow: 0 0 0 2px white, 0 0 0 3px var(--secondary);
+}
+
+/* Product details section */
+.product-details {
+    padding: 1.5rem;
+    background: white;
+    transform: translateY(0);
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.product-card:hover .product-details {
+    transform: translateY(-8px);
+}
+
+.product-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    font-weight: normal;
+    letter-spacing: 0.5px;
+    position: relative;
+    display: inline-block;
+}
+
+.product-card h3::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--secondary);
+    transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.product-card:hover h3::after {
+    width: 100%;
+}
+
+.product-card .color {
+    font-size: 0.85rem;
+    color: var(--text-light);
+    margin-bottom: 0.5rem;
+    font-style: italic;
+}
+
+/* Price animation */
+.price {
+    display: inline-block;
+    transition: all 0.3s ease;
+    font-weight: normal;
+    letter-spacing: 0.5px;
+    color: var(--primary);
+}
+
+.product-card:hover .price {
+    transform: translateX(5px);
+    color: var(--secondary);
+}
+
+.sale-price {
+    color: var(--text-light);
+    text-decoration: line-through;
+    margin-right: 0.5rem;
+}
+
+/* Handcrafted label animation */
+.handcrafted-label {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    opacity: 0.7;
+    transition: all 0.4s ease;
+}
+
+.product-card:hover .handcrafted-label {
+    opacity: 1;
+    transform: rotate(180deg) translateY(-5px);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .product-grid {
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        padding: 1rem;
+        gap: 1rem;
+    }
+    
+    .product-image-container {
+        height: 220px;
+    }
+    
+    .product-details {
+        padding: 1rem;
+    }
+}
+/* Cart Message Styles */
+.cart-message {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 4px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 1000;
+}
+
+.cart-message.show {
+    opacity: 1;
+}
+
+/* Cart Count Badge */
+.cart-count {
+    display: none;
+    background-color: #ff5722;
+    color: white;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    line-height: 20px;
+    font-size: 12px;
+    margin-left: 5px;
+}
